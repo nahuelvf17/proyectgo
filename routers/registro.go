@@ -30,16 +30,19 @@ func Registro(w http.ResponseWriter, r *http.Request) {
 
 	if encontrado == true {
 		http.Error(w, "Ya existe un usuario registrado con este email", 400)
+		return
 	}
 
 	_, status, err := bd.InsertoRegistro(t)
 
 	if err != nil {
 		http.Error(w, "Ocurrio un error al intentar realizar el registro de usuario"+err.Error(), 400)
+		return
 	}
 
 	if status == false {
 		http.Error(w, "No se ha logrado insertar el registro de usuario", 400)
+		return
 	}
 
 	w.WriteHeader(http.StatusCreated)

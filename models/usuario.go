@@ -8,15 +8,15 @@ import (
 
 // Usuario es la structura en la base
 type Usuario struct {
-	ID              primitive.ObjectID `bson:"_id, omitepty" json:"id"`
+	ID              primitive.ObjectID `json:"id" bson:"_id,omitempty"`
 	Nombre          string             `bson:"nombre" json:"nombre,omitempty"`
-	Apellidos       string             `bson:"apellidos" json:"apellidos,omitepmty"`
+	Apellidos       string             `bson:"apellidos" json:"apellidos,omitempty"`
 	FechaNacimiento time.Time          `bson:"fechaNacimiento" json:"fechaNacimiento,omitempty"`
 	Email           string             `bson:"email" json:"email"`
-	Password        string             `bson:"password" json:"password,omitepmty"`
-	Avatar          string             `bson:"avatar" json:"avatar,omitepmty"`
-	Banner          string             `bson:"banner" json:"banner,omitepmty"`
-	Biografia       string             `bson:"biografia" json:"biografia,omitepmty"`
-	Ubicacion       string             `bson:"ubicacion" json:"ubicacion,omitepmty"`
-	SitioWeb        string             `bson:"sitioWeb" json:"sitioWeb,omitepmty"`
+	Password        string             `bson:"password" json:"password,omitempty"`
+	Avatar          string             `bson:"avatar" json:"avatar,omitempty"`
+	Banner          string             `bson:"banner" json:"banner,omitempty"`
+	Biografia       string             `bson:"biografia" json:"biografia,omitempty"`
+	Ubicacion       string             `bson:"ubicacion" json:"ubicacion,omitempty"`
+	SitioWeb        string             `bson:"sitioWeb" json:"sitioWeb,omitempty"`
 }

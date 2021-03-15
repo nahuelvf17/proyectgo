@@ -3,6 +3,7 @@ package bd
 import (
 	"context"
 	"fmt"
+	"log"
 	"time"
 
 	"github.com/nahuelvf17/proyectgo/models"
@@ -25,7 +26,7 @@ func BuscoPerfil(ID string) (models.Usuario, error) {
 	condicion := bson.M{
 		"_id": objID,
 	}
-
+	log.Println("aca voy a buscar")
 	err := col.FindOne(ctx, condicion).Decode(&perfil)
 	perfil.Password = ""
 
@@ -33,6 +34,6 @@ func BuscoPerfil(ID string) (models.Usuario, error) {
 		fmt.Println("Registro no encontrado" + err.Error())
 		return perfil, err
 	}
-
+	log.Println("aca ok")
 	return perfil, nil
 }

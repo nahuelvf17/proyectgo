@@ -2,6 +2,7 @@ package routers
 
 import (
 	"errors"
+	"log"
 	"strings"
 
 	jwt "github.com/dgrijalva/jwt-go"
@@ -13,12 +14,13 @@ import (
 var Email string
 
 // Usuario del token
-var Usuario string
+var IDUsuario string
 
 //ProcesoToken para extraer sus valores
 func ProcesoToken(tk string) (*models.Claim, bool, string, error) {
-	miClave := []byte("MasterdelDesarrollo_grupodeFacebook")
+	miClave := []byte("bauty")
 	claims := &models.Claim{}
+	log.Println(tk)
 	splitToken := strings.Split(tk, "Bearer")
 
 	if len(splitToken) != 2 {
@@ -35,7 +37,7 @@ func ProcesoToken(tk string) (*models.Claim, bool, string, error) {
 		_, encontrado, ID := bd.ChequeoYaExisteUsuario(claims.Email)
 		if encontrado == true {
 			Email = claims.Email
-			Usuario = claims.ID.Hex()
+			IDUsuario = claims.ID.Hex()
 		}
 
 		return claims, encontrado, ID, nil

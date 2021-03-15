@@ -2,7 +2,6 @@ package routers
 
 import (
 	"errors"
-	"log"
 	"strings"
 
 	jwt "github.com/dgrijalva/jwt-go"
@@ -20,7 +19,6 @@ var IDUsuario string
 func ProcesoToken(tk string) (*models.Claim, bool, string, error) {
 	miClave := []byte("bauty")
 	claims := &models.Claim{}
-	log.Println(tk)
 	splitToken := strings.Split(tk, "Bearer")
 
 	if len(splitToken) != 2 {

@@ -2,7 +2,6 @@ package routers
 
 import (
 	"encoding/json"
-	"log"
 	"net/http"
 	"time"
 
@@ -18,20 +17,15 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	var t models.Usuario
 
 	err := json.NewDecoder(r.Body).Decode(&t)
-	log.Println("aca 1")
 	if err != nil {
 		http.Error(w, "Usuario y/o Contraseña"+err.Error(), 400)
 		return
 	}
 
-	log.Println("aca 2")
-
 	if len(t.Email) == 0 {
 		http.Error(w, "El mail del usuario es requerido", 400)
 		return
 	}
-
-	log.Println("aca 3")
 
 	documento, existe := bd.IntentoLogin(t.Email, t.Password)
 
@@ -39,8 +33,6 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Usuario y/o Contraseña", 400)
 		return
 	}
-
-	log.Println("aca 4")
 
 	jwtKey, err := jwt.GeneroJWT(documento)
 

@@ -41,6 +41,7 @@ func LeoTweet(ID string, pagina int64) ([]*models.DevuelvoTweets, bool) {
 		err := cursor.Decode(&registro)
 
 		if err != nil {
+			log.Println(err.Error())
 			return resultados, false
 		}
 

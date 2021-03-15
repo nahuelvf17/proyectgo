@@ -2,6 +2,7 @@ package routers
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 	"strconv"
 
@@ -31,7 +32,7 @@ func LeoTweets(w http.ResponseWriter, r *http.Request) {
 	pag := int64(pagina)
 
 	respuesta, correcto := bd.LeoTweet(ID, pag)
-
+	log.Println(respuesta, correcto)
 	if correcto == false {
 		http.Error(w, "Error al buscar los tweets", http.StatusBadRequest)
 		return

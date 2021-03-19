@@ -33,6 +33,10 @@ func ModificoRegistro(u models.Usuario, ID string) (bool, error) {
 		registro["banner"] = u.Banner
 	}
 
+	if len(u.Avatar) > 0 {
+		registro["avatar"] = u.Avatar
+	}
+
 	if len(u.Biografia) > 0 {
 		registro["biografia"] = u.Biografia
 	}

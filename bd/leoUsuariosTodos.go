@@ -32,7 +32,6 @@ func LeoUsuariosTodos(ID string, page int64, search string, tipo string) ([]*mod
 
 	cur, err := col.Find(ctx, query, findOptions)
 	if err != nil {
-		log.Println(err.Error())
 		return results, false
 	}
 

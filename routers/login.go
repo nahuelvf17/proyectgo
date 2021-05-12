@@ -2,6 +2,7 @@ package routers
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"time"
 
@@ -12,7 +13,7 @@ import (
 
 //Login Realiza el login
 func Login(w http.ResponseWriter, r *http.Request) {
-	w.Header().Add("content-type", "application/json")
+	w.Header().Add("Content-type", "application/json")
 
 	var t models.Usuario
 
@@ -28,7 +29,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	}
 
 	documento, existe := bd.IntentoLogin(t.Email, t.Password)
-
+	fmt.Println(documento, existe)
 	if existe == false {
 		http.Error(w, "Usuario y/o Contraseña", 400)
 		return
